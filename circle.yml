@@ -2,6 +2,11 @@ machine:
   services:
     - docker
 
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init # use submodules
+
 test:
   override:
     - sh script/build
