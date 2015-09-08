@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# ----
+# Generate artefacts
+
+# compile clients
+docker build -t sandcastle/swagger-codegen-docker .
+
+# build artefacts
+docker run \
+    -v "${PWD}/spec:/spec" \
+    -v "${PWD}/tmp/output/html:/gen" \
+    -e "LANGUAGE=statichtml" \
+    -e "SWAGGER_FILE=swagger-api.yml" \
+    tutum.co/claims/swagger-codegen
+
+# docker wait
+
+docker run  \
+    -v "${PWD}/spec:/spec" \
+    -v "${PWD}/tmp/output/csharp:/gen" \
+    -e "LANGUAGE=csharp" \
+    -e "SWAGGER_FILE=swagger-api.yml" \
+    tutum.co/claims/swagger-codegen
+
+# docker wait
+
+docker run \
+    -v "${PWD}/spec:/spec" \
+    -v "${PWD}/tmp/output/typescript-angular:/gen" \
+    -e "LANGUAGE=typescript-angular" \
+    -e "SWAGGER_FILE=swagger-api.yml" \
+    tutum.co/claims/swagger-codegen
+
+cp tmp/output/ $CIRCLE_ARTIFACTS/
