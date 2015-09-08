@@ -3,6 +3,8 @@
 # ----
 # Generate artefacts
 
+mkdir -p tmp/output/
+
 # compile clients
 docker build -t sandcastle/swagger-codegen-docker .
 
