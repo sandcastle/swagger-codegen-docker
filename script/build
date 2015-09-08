@@ -18,7 +18,7 @@ docker run \
     -v "${PWD}/tmp/output/html:/gen" \
     -e "LANGUAGE=statichtml" \
     -e "SWAGGER_FILE=swagger-api.yml" \
-    tutum.co/claims/swagger-codegen
+    sandcastle/swagger-codegen-docker
 
 # docker wait
 
@@ -27,7 +27,7 @@ docker run  \
     -v "${PWD}/tmp/output/csharp:/gen" \
     -e "LANGUAGE=csharp" \
     -e "SWAGGER_FILE=swagger-api.yml" \
-    tutum.co/claims/swagger-codegen
+    sandcastle/swagger-codegen-docker
 
 # docker wait
 
@@ -36,6 +36,7 @@ docker run \
     -v "${PWD}/tmp/output/typescript-angular:/gen" \
     -e "LANGUAGE=typescript-angular" \
     -e "SWAGGER_FILE=swagger-api.yml" \
-    tutum.co/claims/swagger-codegen
+    sandcastle/swagger-codegen-docker
 
-cp tmp/output/ $CIRCLE_ARTIFACTS/
+# artifacts
+cp -R tmp/output/ $CIRCLE_ARTIFACTS/

@@ -10,4 +10,3 @@ checkout:
 test:
   override:
     - sh script/build
-    - cp -R tmp/output/ $CIRCLE_ARTIFACTS/
