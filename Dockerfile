@@ -5,7 +5,7 @@ ENV LANGUAGE statichtml
 ENV SWAGGER_CODEGEN_DIR	/src/swagger-codegen
 ENV SWAGGER_CODEGEN_CLI	$SWAGGER_CODEGEN_DIR/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar
 
-ADD swagger-codegen/ /src
+ADD swagger-codegen/ /src/
 
 RUN cd $SWAGGER_CODEGEN_DIR \
     && mvn package \
