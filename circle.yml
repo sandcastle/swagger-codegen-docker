@@ -7,6 +7,10 @@ checkout:
     - git submodule sync
     - git submodule update --init # use submodules
 
+dependencies:
+  cache_directories:
+    - "swagger-codegen"
+
 test:
   override:
     - sh script/build

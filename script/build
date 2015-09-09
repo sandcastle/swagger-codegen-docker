@@ -17,7 +17,7 @@ docker run \
     -v "${PWD}/spec:/spec" \
     -v "${PWD}/tmp/output/html:/gen" \
     -e "LANGUAGE=statichtml" \
-    -e "SWAGGER_FILE=swagger-api.yml" \
+    -e "SWAGGER_FILE=swagger.yml" \
     sandcastle/swagger-codegen-docker
 
 # docker wait
@@ -26,7 +26,7 @@ docker run  \
     -v "${PWD}/spec:/spec" \
     -v "${PWD}/tmp/output/csharp:/gen" \
     -e "LANGUAGE=csharp" \
-    -e "SWAGGER_FILE=swagger-api.yml" \
+    -e "SWAGGER_FILE=swagger.yml" \
     sandcastle/swagger-codegen-docker
 
 # docker wait
@@ -35,7 +35,7 @@ docker run \
     -v "${PWD}/spec:/spec" \
     -v "${PWD}/tmp/output/typescript-angular:/gen" \
     -e "LANGUAGE=typescript-angular" \
-    -e "SWAGGER_FILE=swagger-api.yml" \
+    -e "SWAGGER_FILE=swagger.yml" \
     sandcastle/swagger-codegen-docker
 
 # artifacts
