@@ -10,7 +10,10 @@ checkout:
 dependencies:
   cache_directories:
     - "swagger-codegen"
+  override:
+    - cd swagger-codegen && mvn package && cd ..
 
 test:
   override:
     - sh script/build
+    - sh script/test

@@ -8,10 +8,8 @@ VOLUME /gen
 WORKDIR /src
 
 ADD run.sh run.sh
-ADD swagger-codegen/ /src/swagger-codegen
+RUN chmod a+x /src/run.sh
 
-RUN chmod a+x /src/run.sh \
-    && cd /src/swagger-codegen \
-    && mvn package
+ADD swagger-codegen/ /src/swagger-codegen
 
 CMD ["/src/run.sh"]

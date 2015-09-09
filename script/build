@@ -5,38 +5,5 @@ set -e
 cd "$(dirname "$0")/.."
 
 # ----
-# Generate artefacts
 
-mkdir -p tmp/output/
-
-# compile clients
 docker build -t sandcastle/swagger-codegen-docker .
-
-# build artefacts
-docker run \
-    -v "${PWD}/spec:/spec" \
-    -v "${PWD}/tmp/output/html:/gen" \
-    -e "LANGUAGE=dynamic-html" \
-    -e "SWAGGER_FILE=swagger.yml" \
-    sandcastle/swagger-codegen-docker
-
-# docker wait
-
-docker run  \
-    -v "${PWD}/spec:/spec" \
-    -v "${PWD}/tmp/output/csharp:/gen" \
-    -e "LANGUAGE=csharp" \
-    -e "SWAGGER_FILE=swagger.yml" \
-    sandcastle/swagger-codegen-docker
-
-# docker wait
-
-docker run \
-    -v "${PWD}/spec:/spec" \
-    -v "${PWD}/tmp/output/typescript-angular:/gen" \
-    -e "LANGUAGE=typescript-angular" \
-    -e "SWAGGER_FILE=swagger.yml" \
-    sandcastle/swagger-codegen-docker
-
-# artifacts
-cp -R tmp/output/ $CIRCLE_ARTIFACTS/
