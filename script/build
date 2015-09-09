@@ -16,7 +16,7 @@ docker build -t sandcastle/swagger-codegen-docker .
 docker run \
     -v "${PWD}/spec:/spec" \
     -v "${PWD}/tmp/output/html:/gen" \
-    -e "LANGUAGE=statichtml" \
+    -e "LANGUAGE=dynamic-html" \
     -e "SWAGGER_FILE=swagger.yml" \
     sandcastle/swagger-codegen-docker
 
